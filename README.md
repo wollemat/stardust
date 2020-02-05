@@ -5,7 +5,7 @@
 
 # Stardust
 
-Stardust is a exoplanet start transit modeler written in Python. 
+Stardust is a simulation that models a transit by an exoplanet across a distant star. 
 
 ### Requirements
 
