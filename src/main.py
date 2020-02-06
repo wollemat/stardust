@@ -22,7 +22,7 @@ NUMBER_OF_WORKERS = 16
 # Private variables
 
 _grid_size = int(2 * (STAR_RADIUS + MARGIN))
-_planet_y = _grid_size * PLANET_INCLINATION
+_planet_y = int(_grid_size * PLANET_INCLINATION)
 
 
 def calc_star_brightness(d_star_center):
@@ -30,27 +30,38 @@ def calc_star_brightness(d_star_center):
     return 1 - STAR_LIMB_DARKENING_COEFFICIENT * (1 - (tmp ** STAR_LIMB_DARKENING_ALPHA))
 
 
-def generate_snapshot_image(planet_x):
+def generate_star():
     grid = np.zeros((_grid_size, _grid_size, 3), dtype=np.uint8)
+
     for x in range(_grid_size):
         for y in range(_grid_size):
             dx_star_center = STAR_RADIUS - x
             dy_star_center = STAR_RADIUS - y
             d_star_center = math.sqrt(dx_star_center ** 2 + dy_star_center ** 2)
 
-            if d_star_center > STAR_RADIUS:
-                continue
+            if d_star_center < STAR_RADIUS:
+                brightness = calc_star_brightness(d_star_center)
+                grid[x, y, 2] = 255 * brightness
+                grid[x, y, 1] = 165 * brightness
 
+    return grid
+
+
+_star = generate_star()
+
+
+def cut_out_planet(planet_x):
+    grid = _star.copy()
+    for x in range(max(0, abs(planet_x - PLANET_RADIUS)), min(_grid_size, planet_x + PLANET_RADIUS)):
+        for y in range(max(0, abs(_planet_y - PLANET_RADIUS)), min(_grid_size, _planet_y + PLANET_RADIUS)):
             dx_planet_center = abs(planet_x - x)
             dy_planet_center = abs(_planet_y - y)
             d_planet_center = math.sqrt(dx_planet_center ** 2 + dy_planet_center ** 2)
 
             if d_planet_center < PLANET_RADIUS:
-                continue
-
-            brightness = calc_star_brightness(d_star_center)
-            grid[x, y, 0] = 255 * brightness
-            grid[x, y, 1] = 165 * brightness
+                grid[x, y, 0] = 0
+                grid[x, y, 1] = 0
+                grid[x, y, 2] = 0
 
     return grid
 
@@ -59,14 +70,13 @@ def worker_function(conn):
     msg = conn.recv()
 
     if isinstance(msg, int):
-        print("Modeling snapshot %d" % msg)
-        conn.send(generate_snapshot_image(msg))
+        conn.send(cut_out_planet(msg))
         worker_function(conn)
+        return
 
     if isinstance(msg, str):
         if msg == "stop":
-            print("Stopping")
-            exit()
+            return
 
     print("Something went wrong")
 
