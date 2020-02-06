@@ -38,23 +38,19 @@ def start_workers(processes):
 
 
 def delegate_workers(conns, counter):
-    start_counter = counter
     for i in range(NUMBER_OF_WORKERS):
         if counter == _GRID_SIZE:
             break
         conns[i].send(counter)
         counter += 1
-    print("Frames %d until %d have been delegated" % (start_counter, counter - 1))
 
 
 def collect_from_workers(conns, counter, video):
-    start_counter = counter
     for i in range(NUMBER_OF_WORKERS):
         if counter == _GRID_SIZE:
             break
         video.write(conns[i].recv())
         counter += 1
-    print("Frames %d until %d have been collected" % (start_counter, counter - 1))
 
 
 def stop_workers(conns, processes):
