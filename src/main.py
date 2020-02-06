@@ -14,7 +14,7 @@ STAR_LIMB_DARKENING_COEFFICIENT = 0.80
 STAR_LIMB_DARKENING_ALPHA = 0.85
 
 PLANET_RADIUS = 50
-PLANET_INCLINATION = 0.2
+PLANET_INCLINATION = -250
 
 MARGIN = 50
 NUMBER_OF_WORKERS = 16
@@ -22,7 +22,7 @@ NUMBER_OF_WORKERS = 16
 # Private variables
 
 _grid_size = int(2 * (STAR_RADIUS + MARGIN))
-_planet_y = int(_grid_size * PLANET_INCLINATION)
+_planet_y = int(STAR_RADIUS + MARGIN + PLANET_INCLINATION)
 
 
 def calc_star_brightness(d_star_center):
