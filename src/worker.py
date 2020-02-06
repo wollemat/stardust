@@ -1,7 +1,7 @@
 from multiprocessing import Process
 from multiprocessing import Pipe
 
-from star import cut_out_planet
+from planet import cut_out_planet
 
 from config import NUMBER_OF_WORKERS
 from config import _GRID_SIZE
