@@ -1,6 +1,8 @@
 import math as math
 import matplotlib.pyplot as plt
-import numpy as numpy
+import numpy as np
+
+from multiprocessing import Pool
 
 # Configuration
 
@@ -11,6 +13,7 @@ PLANET_RADIUS = 500
 KM_PER_PIXEL = 10
 PLANET_INCLINATION = 0.2
 SAMPLE_RATE = 0.05
+NUMBER_OF_WORKERS = 12
 
 # private variables
 
@@ -27,7 +30,7 @@ def calc_star_brightness(d_star_center):
 
 
 def generate_snapshot_image(planet_x):
-    grid = numpy.zeros((_grid_size, _grid_size))
+    grid = np.zeros((_grid_size, _grid_size))
 
     for x in range(_grid_size):
         for y in range(_grid_size):
@@ -50,13 +53,14 @@ def generate_snapshot_image(planet_x):
     return grid
 
 
-if __name__ == '__main__':
-    samples = int(_grid_size * SAMPLE_RATE)
-    transit = numpy.zeros(samples)
+def worker_function(x):
+    snapshot = generate_snapshot_image(x)
+    return snapshot.mean()
 
-    for t in range(samples):
-        transit[t] = generate_snapshot_image(int(t * _grid_size / samples)).mean()
-        print("Finished %d of %d" % (t + 1, samples))
+
+if __name__ == '__main__':
+    with Pool(NUMBER_OF_WORKERS) as pool:
+        transit = pool.map(worker_function, np.arange(0, _grid_size, _grid_size * SAMPLE_RATE, dtype=int))
 
     plt.plot(transit)
     plt.show()
