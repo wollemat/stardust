@@ -63,7 +63,7 @@ def cut_out_planet(planet_x):
                 grid[x, y, 1] = 0
                 grid[x, y, 2] = 0
 
-    return grid
+    return np.flip(np.swapaxes(grid, 0, 1), 0)
 
 
 def worker_function(conn):
