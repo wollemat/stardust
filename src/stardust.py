@@ -5,6 +5,7 @@ from cv2 import VideoWriter
 from cv2 import VideoWriter_fourcc
 
 from config import NUMBER_OF_WORKERS
+from config import FPS
 from config import _GRID_SIZE
 
 from worker import initialize_workers
@@ -35,7 +36,7 @@ if __name__ == '__main__':
     except Exception:
         pass
 
-    video = VideoWriter('./data/%s.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), 24.0, (_GRID_SIZE, _GRID_SIZE))
+    video = VideoWriter('./data/%s.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), FPS, (_GRID_SIZE, _GRID_SIZE))
     counter = 0
     processes = []
     conns = []
@@ -56,4 +57,3 @@ if __name__ == '__main__':
     stop_workers(conns, processes)
     video.release()
     print("Video has been saved to ./data/%s.mkv" % sys.argv[1])
-
