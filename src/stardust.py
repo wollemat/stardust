@@ -1,3 +1,5 @@
+import sys
+
 from cv2 import VideoWriter
 from cv2 import VideoWriter_fourcc
 
@@ -23,7 +25,11 @@ def print_progress_bar(iteration, total):
 
 
 if __name__ == '__main__':
-    video = VideoWriter('./data/transit.mkv', VideoWriter_fourcc(*'X264'), 24.0, (_GRID_SIZE, _GRID_SIZE))
+    if len(sys.argv) != 2:
+        print("Invalid arguments: Usage is stardust.py name_of_video")
+        exit()
+
+    video = VideoWriter('./data/%s.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), 24.0, (_GRID_SIZE, _GRID_SIZE))
     counter = 0
     processes = []
     conns = []
@@ -43,5 +49,5 @@ if __name__ == '__main__':
 
     stop_workers(conns, processes)
     video.release()
-    print("Video has been saved")
+    print("Video has been saved to ./data/%s.mkv" % sys.argv[1])
 
