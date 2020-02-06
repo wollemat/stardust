@@ -1,4 +1,3 @@
-
 <p align="center">
     <img src="./doc/icon.png" alt="icon" width="100" height="100" align="centera"/>
 </p>
