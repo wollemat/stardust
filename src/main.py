@@ -7,16 +7,13 @@ import numpy as numpy
 STAR_RADIUS = 5000
 STAR_LIMB_DARKENING_COEFFICIENT = 0.80
 STAR_LIMB_DARKENING_ALPHA = 0.85
-
 PLANET_RADIUS = 500
-
 KM_PER_PIXEL = 10
 
 # private variables
 
 _star_pixel_radius = int(STAR_RADIUS / KM_PER_PIXEL)
 _planet_pixel_radius = int(PLANET_RADIUS / KM_PER_PIXEL)
-_atm_pixel_radius = int(60)
 _grid_size = int(2 * _star_pixel_radius + 1)
 
 
@@ -45,13 +42,7 @@ def generate_snapshot_image(planet_x, planet_y):
             if d_planet_center < _planet_pixel_radius:
                 continue
 
-            star_brightness = calc_star_brightness(d_star_center)
-
-            if d_planet_center < _atm_pixel_radius:
-                grid[x, y] = 100  # TODO implement atmosphere
-                continue
-
-            grid[x, y] = star_brightness
+            grid[x, y] = calc_star_brightness(d_star_center)
 
     return grid
 
