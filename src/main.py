@@ -35,8 +35,8 @@ def generate_star():
 
     for x in range(_grid_size):
         for y in range(_grid_size):
-            dx_star_center = STAR_RADIUS - x
-            dy_star_center = STAR_RADIUS - y
+            dx_star_center = STAR_RADIUS + MARGIN - x
+            dy_star_center = STAR_RADIUS + MARGIN - y
             d_star_center = math.sqrt(dx_star_center ** 2 + dy_star_center ** 2)
 
             if d_star_center < STAR_RADIUS:
