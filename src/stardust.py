@@ -1,3 +1,4 @@
+import os
 import sys
 
 from cv2 import VideoWriter
@@ -28,6 +29,11 @@ if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Invalid arguments: Usage is stardust.py name_of_video")
         exit()
+
+    try:
+        os.mkdir('data')
+    except Exception:
+        pass
 
     video = VideoWriter('./data/%s.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), 24.0, (_GRID_SIZE, _GRID_SIZE))
     counter = 0
