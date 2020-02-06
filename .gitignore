@@ -1,3 +1,2 @@
-# Ignore project files PyCharm
-.idea/
-
+# Ignore data directory
+.data/
