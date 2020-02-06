@@ -37,8 +37,8 @@ def generate_star():
 def cut_out_planet(original_star, planet_x, planet_y):
     grid_copy = numpy.copy(original_star)
 
-    for x in range(_grid_size):
-        for y in range(_grid_size):
+    for x in range(max(0, planet_x - _planet_pixel_radius), min(planet_x + _planet_pixel_radius, _grid_size)):
+        for y in range(max(0, planet_y - _planet_pixel_radius), min(planet_y + _planet_pixel_radius, _grid_size)):
             dx = abs(planet_x - x)
             dy = abs(planet_y - y)
             dp = math.sqrt(dx ** 2 + dy ** 2)
@@ -50,6 +50,6 @@ def cut_out_planet(original_star, planet_x, planet_y):
 
 
 if __name__ == '__main__':
-    star = cut_out_planet(generate_star(), 200, 300)
-    plt.imshow(star, origin='lower')
+    star = cut_out_planet(generate_star(), 300, 700)
+    plt.imshow(star.T, origin='lower')
     plt.show()
