@@ -28,9 +28,18 @@ $ pipenv run python ./src/stardust.py DIRECTORY_NAME
 
 Where `DIRECTORY_NAME` is the name of the directory where the files will be stored. This video file will be stored at `./data/DIRECTORY_NAME/transit.mp4`. This image file will be stored at `./data/DIRECTORY_NAME/transit.png`. 
 
-Good luck and have fun, here is a preview:
+Good luck and have fun.
+
+## Examples
+
+#### Transit video with 3 planets
 
 <p align="center"> <img src="https://media.giphy.com/media/gF8wep9qLIZec4a466/giphy.gif" alt="example gif" width="512" height="512" /> </p>
+
+#### Transit of a single planet
+
+<p align="center"> <img src="./examples/transit 1 planet/transit.png" alt="example transit" height="300" /> </p>
+
 
 ## Authors
 
