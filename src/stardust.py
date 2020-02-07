@@ -59,7 +59,7 @@ if __name__ == '__main__':
     mkdir('data')
     mkdir('data/%s' % sys.argv[1])
 
-    video = VideoWriter('./data/%s/transit.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), FPS, (_GRID_SIZE, _GRID_SIZE))
+    video = VideoWriter('./data/%s/transit.mp4' % sys.argv[1], VideoWriter_fourcc(*'avc1'), FPS, (_GRID_SIZE, _GRID_SIZE))
     counter = 0
     processes = []
     conns = []
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
     stop_workers(conns, processes)
     video.release()
-    print("Video has been saved to ./data/%s/transit.mkv" % sys.argv[1])
+    print("Video has been saved to ./data/%s/transit.mp4" % sys.argv[1])
 
     transit /= transit[0]
     plt.figure(figsize=(12, 4))

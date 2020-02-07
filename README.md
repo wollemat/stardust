@@ -26,7 +26,7 @@ The script has a few dependencies such as NumPy. This dependencies need to loade
 $ pipenv run python ./src/stardust.py DIRECTORY_NAME
 ```
 
-Where `DIRECTORY_NAME` is the name of the directory where the files will be stored. This video file will be stored at `./data/DIRECTORY_NAME/transit.mkv`. This image file will be stored at `./data/DIRECTORY_NAME/transit.png`. 
+Where `DIRECTORY_NAME` is the name of the directory where the files will be stored. This video file will be stored at `./data/DIRECTORY_NAME/transit.mp4`. This image file will be stored at `./data/DIRECTORY_NAME/transit.png`. 
 
 Good luck and have fun, here is a preview:
 
