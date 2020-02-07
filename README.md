@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="./doc/icon.png" alt="icon" width="100" height="100" align="centera"/>
-</p>
+<p align="center"> <img src="./doc/icon.png" alt="icon" width="100" height="100" /> </p>
 
 # Stardust
 
@@ -24,10 +22,14 @@ $ pipenv install
 The script has a few dependencies such as NumPy. This dependencies need to loaded into an environment and started. We could start an environment and run the script in that. However it is possible to run the script with a single command.
 
 ```
-$ pipenv run ./src/stardust.py FILE_NAME
+$ pipenv run python ./src/stardust.py FILE_NAME
 ```
 
 Where `FILE_NAME` is the name the generated video file will be given. This video file will be stored at `./data/FILE_NAME.mkv`. 
+
+Good luck and have fun, here is a preview:
+
+<p align="center"> <img src="https://media.giphy.com/media/gF8wep9qLIZec4a466/giphy.gif" alt="example gif" width="512" height="512" /> </p>
 
 ### Authors
 
