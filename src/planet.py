@@ -7,11 +7,13 @@ from star import generate_star
 from config import PLANET_1_RADIUS
 from config import PLANET_1_INCLINATION
 
+from config import PLANET_2
 from config import PLANET_2_RADIUS
 from config import PLANET_2_INCLINATION
 from config import PLANET_2_SPEED_FACTOR
 from config import PLANET_2_OFFSET
 
+from config import PLANET_3
 from config import PLANET_3_RADIUS
 from config import PLANET_3_INCLINATION
 from config import PLANET_3_SPEED_FACTOR
@@ -58,7 +60,9 @@ def cut_out_planets(x):
     grid = _STAR.copy()
 
     cut_out_planet(grid, x, _PLANET_1_Y, PLANET_1_RADIUS)
-    cut_out_planet(grid, int(x * PLANET_2_SPEED_FACTOR + PLANET_2_OFFSET), _PLANET_2_Y, PLANET_2_RADIUS)
-    cut_out_planet(grid, int(x * PLANET_3_SPEED_FACTOR + PLANET_3_OFFSET), _PLANET_3_Y, PLANET_3_RADIUS)
+    if PLANET_2:
+        cut_out_planet(grid, int(x * PLANET_2_SPEED_FACTOR + PLANET_2_OFFSET), _PLANET_2_Y, PLANET_2_RADIUS)
+    if PLANET_3:
+        cut_out_planet(grid, int(x * PLANET_3_SPEED_FACTOR + PLANET_3_OFFSET), _PLANET_3_Y, PLANET_3_RADIUS)
 
     return np.flip(np.swapaxes(grid, 0, 1), 0)
