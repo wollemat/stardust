@@ -21,12 +21,20 @@ from config import STAR_RADIUS
 from config import MARGIN
 from config import _GRID_SIZE
 
-_STAR = generate_star()
-_PLANET_1_Y = int(STAR_RADIUS + MARGIN + PLANET_1_INCLINATION)
-_PLANET_2_Y = int(STAR_RADIUS + MARGIN + PLANET_2_INCLINATION)
-_PLANET_3_Y = int(STAR_RADIUS + MARGIN + PLANET_3_INCLINATION)
+_STAR = generate_star()  # Cached star image.
+_PLANET_1_Y = int(STAR_RADIUS + MARGIN + PLANET_1_INCLINATION)  # Y coordinate of planet 1.
+_PLANET_2_Y = int(STAR_RADIUS + MARGIN + PLANET_2_INCLINATION)  # Y coordinate of planet 2.
+_PLANET_3_Y = int(STAR_RADIUS + MARGIN + PLANET_3_INCLINATION)  # Y coordinate of planet 3.
 
 
+#
+# This function takes an image grid representing a star and cuts out a planet.
+#
+# grid: The image grid representing a star.
+# planet_x: The x coordinate of the planet center.
+# planet_y: The y coordinate of the planet center.
+# planet_radius: The pixel radius of the planet.
+#
 def cut_out_planet(grid, planet_x, planet_y, planet_radius):
     for x in range(max(0, abs(planet_x - planet_radius)), min(_GRID_SIZE, planet_x + planet_radius)):
         for y in range(max(0, abs(planet_y - planet_radius)), min(_GRID_SIZE, planet_y + planet_radius)):
@@ -40,6 +48,12 @@ def cut_out_planet(grid, planet_x, planet_y, planet_radius):
                 grid[x, y, 2] = 0
 
 
+#
+# This function makes a copy of the cached star image and cuts out the 3 planets. Afterwards it flips
+# and transposes the image such that it is rendered correctly.
+#
+# x: The x coordinate of the center of planet 1.
+#
 def cut_out_planets(x):
     grid = _STAR.copy()
 

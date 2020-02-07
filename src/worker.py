@@ -7,6 +7,11 @@ from config import NUMBER_OF_WORKERS
 from config import _GRID_SIZE
 
 
+#
+# This function is executed by the worker thread of the script.
+#
+# conn: The endpoint connection of the Pipe used to communicate with the main thread.
+#
 def worker_function(conn):
     msg = conn.recv()
 
@@ -22,6 +27,12 @@ def worker_function(conn):
     print("Something went wrong")
 
 
+#
+# This function initializes the worker threads.
+#
+# conns: The endpoints of the pipes to the main thread. This list is initially empty and filled by the function.
+# processes: The processes created by the function are collected in this list.
+#
 def initialize_workers(conns, processes):
     for i in range(NUMBER_OF_WORKERS):
         parent_connection, child_connection = Pipe()
@@ -31,12 +42,23 @@ def initialize_workers(conns, processes):
     print("Workers are initialized")
 
 
+#
+# This function starts the worker threads.
+#
+# processes: The list of processes to be started.
+#
 def start_workers(processes):
     for i in range(NUMBER_OF_WORKERS):
         processes[i].start()
     print("Workers have started")
 
 
+#
+# This function delegates the different frames to be rendered to the worker threads.
+#
+# conns: The pipe connections to the workers.
+# counter: The current frame to be rendered.
+#
 def delegate_workers(conns, counter):
     for i in range(NUMBER_OF_WORKERS):
         if counter == _GRID_SIZE:
@@ -45,6 +67,13 @@ def delegate_workers(conns, counter):
         counter += 1
 
 
+#
+# This function collects the rendered images from the worker threads.
+#
+# conns: The pipe connections to the worker threads.
+# counter: The current expected frame.
+# video: The video writer used to write frames.
+#
 def collect_from_workers(conns, counter, video):
     for i in range(NUMBER_OF_WORKERS):
         if counter == _GRID_SIZE:
@@ -53,6 +82,12 @@ def collect_from_workers(conns, counter, video):
         counter += 1
 
 
+#
+# This function stops all the worker threads and cleans up after them.
+#
+# conns: The pipe connections to the threads.
+# processes: The list of processes to be killed.
+#
 def stop_workers(conns, processes):
     for i in range(NUMBER_OF_WORKERS):
         conns[i].send("stop")

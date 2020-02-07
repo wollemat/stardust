@@ -8,11 +8,20 @@ from config import MARGIN
 from config import _GRID_SIZE
 
 
+#
+# This function calculates the brightness of the star at a certain distance from the center. The effect
+# of limb darkening has been allowed for.
+#
+# d_star_center: The pixel distance from the center of the star.
+#
 def calc_star_brightness(d_star_center):
     tmp = (1 - ((d_star_center / STAR_RADIUS) ** 2)) ** 0.5
     return 1 - STAR_LIMB_DARKENING_COEFFICIENT * (1 - (tmp ** STAR_LIMB_DARKENING_ALPHA))
 
 
+#
+# This function generates an image of a star and returns the image grid.
+#
 def generate_star():
     grid = np.zeros((_GRID_SIZE, _GRID_SIZE, 3), dtype=np.uint8)
 

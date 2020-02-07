@@ -15,6 +15,13 @@ from worker import collect_from_workers
 from worker import stop_workers
 
 
+#
+# This function prints a progress bar in the terminal. The progress bar needs to be manually updated
+# with the current progress.
+#
+# iteration: The frame currently being rendered.
+# total: The total amount of frames to be rendered.
+#
 def print_progress_bar(iteration, total):
     fill = '█'
     length = 80
@@ -26,6 +33,9 @@ def print_progress_bar(iteration, total):
         print()
 
 
+#
+# The main function of the script. The program starts here.
+#
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Invalid arguments: Usage is stardust.py name_of_video")
