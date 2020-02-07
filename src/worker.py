@@ -21,10 +21,10 @@ def worker_function(conn):
         return
 
     if isinstance(msg, str):
-        if msg == "stop":
+        if msg == 'stop':
             return
 
-    print("Something went wrong")
+    print('Something went wrong')
 
 
 #
@@ -39,7 +39,7 @@ def initialize_workers(conns, processes):
         process = Process(target=worker_function, args=(child_connection,))
         processes.append(process)
         conns.append(parent_connection)
-    print("Workers are initialized")
+    print('Workers are initialized')
 
 
 #
@@ -50,7 +50,7 @@ def initialize_workers(conns, processes):
 def start_workers(processes):
     for i in range(NUMBER_OF_WORKERS):
         processes[i].start()
-    print("Workers have started")
+    print('Workers have started')
 
 
 #
@@ -92,7 +92,7 @@ def collect_from_workers(conns, counter, video, transit):
 #
 def stop_workers(conns, processes):
     for i in range(NUMBER_OF_WORKERS):
-        conns[i].send("stop")
+        conns[i].send('stop')
     for i in range(NUMBER_OF_WORKERS):
         processes[i].join()
-    print("Workers have been stopped")
+    print('Workers have been stopped')

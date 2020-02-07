@@ -28,10 +28,10 @@ from worker import stop_workers
 def print_progress_bar(iteration, total):
     fill = '█'
     length = 80
-    percent = "{0:.1f}".format(100 * (iteration / float(total)))
+    percent = '{0:.1f}'.format(100 * (iteration / float(total)))
     filled_length = int(length * iteration // total)
     bar = fill * filled_length + '-' * (length - filled_length)
-    print('\r|%s| %s%%' % (bar, percent), end="\r")
+    print('\r|%s| %s%%' % (bar, percent), end='\r')
     if iteration == total:
         print()
 
@@ -53,7 +53,7 @@ def mkdir(name):
 #
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Invalid arguments: Usage is stardust.py name_of_directory")
+        print('Invalid arguments: Usage is stardust.py name_of_directory')
         exit()
 
     mkdir('data')
@@ -80,12 +80,12 @@ if __name__ == '__main__':
 
     stop_workers(conns, processes)
     video.release()
-    print("Video has been saved to ./data/%s/transit.mp4" % sys.argv[1])
+    print('Video has been saved to ./data/%s/transit.mp4' % sys.argv[1])
 
     transit /= transit[0]
     plt.figure(figsize=(12, 4))
     plt.plot(transit)
-    plt.title("Measured Luminosity over Time")
+    plt.title('Measured Luminosity over Time')
     plt.gca().axes.get_xaxis().set_ticks([])
-    plt.savefig("./data/%s/transit.png" % sys.argv[1])
-    print("Transit has been saved to ./data/%s/transit.png" % sys.argv[1])
+    plt.savefig('./data/%s/transit.png' % sys.argv[1])
+    print('Transit has been saved to ./data/%s/transit.png' % sys.argv[1])
