@@ -74,11 +74,13 @@ def delegate_workers(conns, counter):
 # counter: The current expected frame.
 # video: The video writer used to write frames.
 #
-def collect_from_workers(conns, counter, video):
+def collect_from_workers(conns, counter, video, transit):
     for i in range(NUMBER_OF_WORKERS):
         if counter == _GRID_SIZE:
             break
-        video.write(conns[i].recv())
+        frame = conns[i].recv()
+        transit[counter] = frame.mean()
+        video.write(frame)
         counter += 1
 
 

@@ -1,6 +1,9 @@
 import os
 import sys
 
+import numpy as np
+import matplotlib.pyplot as plt
+
 from cv2 import VideoWriter
 from cv2 import VideoWriter_fourcc
 
@@ -34,6 +37,18 @@ def print_progress_bar(iteration, total):
 
 
 #
+# This function creates a directory. If the directory already exists it does nothing.
+#
+# name: The name of the directory to be created.
+#
+def mkdir(name):
+    try:
+        os.mkdir(name)
+    except FileExistsError:
+        pass
+
+
+#
 # The main function of the script. The program starts here.
 #
 if __name__ == '__main__':
@@ -41,15 +56,14 @@ if __name__ == '__main__':
         print("Invalid arguments: Usage is stardust.py name_of_video")
         exit()
 
-    try:
-        os.mkdir('data')
-    except FileExistsError:
-        pass
+    mkdir('data')
+    mkdir('data/%s' % sys.argv[1])
 
-    video = VideoWriter('./data/%s.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), FPS, (_GRID_SIZE, _GRID_SIZE))
+    video = VideoWriter('./data/%s/transit.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), FPS, (_GRID_SIZE, _GRID_SIZE))
     counter = 0
     processes = []
     conns = []
+    transit = np.zeros(_GRID_SIZE)
 
     initialize_workers(conns, processes)
     start_workers(processes)
@@ -57,7 +71,7 @@ if __name__ == '__main__':
     print()
     while counter < _GRID_SIZE:
         delegate_workers(conns, counter)
-        collect_from_workers(conns, counter, video)
+        collect_from_workers(conns, counter, video, transit)
         counter += NUMBER_OF_WORKERS
         if counter > _GRID_SIZE:
             counter = _GRID_SIZE
@@ -66,4 +80,12 @@ if __name__ == '__main__':
 
     stop_workers(conns, processes)
     video.release()
-    print("Video has been saved to ./data/%s.mkv" % sys.argv[1])
+    print("Video has been saved to ./data/%s/transit.mkv" % sys.argv[1])
+
+    transit /= transit[0]
+    plt.figure(figsize=(12, 4))
+    plt.plot(transit)
+    plt.title("Measured Luminosity over Time")
+    plt.gca().axes.get_xaxis().set_ticks([])
+    plt.savefig("./data/%s/transit.png" % sys.argv[1])
+    print("Transit has been saved to ./data/%s/transit.png" % sys.argv[1])
