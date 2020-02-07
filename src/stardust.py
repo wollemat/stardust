@@ -53,7 +53,7 @@ def mkdir(name):
 #
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Invalid arguments: Usage is stardust.py name_of_video")
+        print("Invalid arguments: Usage is stardust.py name_of_directory")
         exit()
 
     mkdir('data')

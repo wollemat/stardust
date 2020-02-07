@@ -2,7 +2,7 @@
 
 # Stardust
 
-Stardust is a simulation that models the transits of up to 3 planets in front of a star. This simulation is aggregated into a video file.
+Stardust is a simulation that models the transits of up to 3 planets in front of a star. This simulation is aggregated into a video file and an image file showing the transit.
 
 ## Getting Started
 
@@ -23,10 +23,10 @@ $ pipenv install
 The script has a few dependencies such as NumPy. This dependencies need to loaded into an environment and started. We could start an environment and run the script in that. However it is possible to run the script with a single command.
 
 ```
-$ pipenv run python ./src/stardust.py FILE_NAME
+$ pipenv run python ./src/stardust.py DIRECTORY_NAME
 ```
 
-Where `FILE_NAME` is the name the generated video file will be given. This video file will be stored at `./data/FILE_NAME.mkv`. 
+Where `DIRECTORY_NAME` is the name of the directory where the files will be stored. This video file will be stored at `./data/DIRECTORY_NAME/transit.mkv`. This image file will be stored at `./data/DIRECTORY_NAME/transit.png`. 
 
 Good luck and have fun, here is a preview:
 
