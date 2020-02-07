@@ -4,15 +4,30 @@
 
 # Stardust
 
-Stardust is a simulation that models a transit by an exoplanet across a distant star. 
+Stardust is a simulation that models the transits of up to 3 planets in front of a star. This simulation is aggregated into a video file.
 
-### Requirements
+### Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and 
+testing purposes. Stardust has only 2 requirements:
 
-TBD;
+* A working installment of Python, preferably Python 3.8
+* A working installation of Pipenv
+
+Assuming the requirements are met it only takes a single and simple command to get up and running.
+
+```
+$ pipenv install
+```
 
 ### Deployment
 
-TBD;
+The script has a few dependencies such as NumPy. This dependencies need to loaded into an environment and started. We could start an environment and run the script in that. However it is possible to run the script with a single command.
+
+```
+$ pipenv run ./src/stardust.py FILE_NAME
+```
+
+Where `FILE_NAME` is the name the generated video file will be given. This video file will be stored at `./data/FILE_NAME.mkv`. 
 
 ### Authors
 
