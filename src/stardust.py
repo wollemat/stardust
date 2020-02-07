@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     try:
         os.mkdir('data')
-    except Exception:
+    except FileExistsError:
         pass
 
     video = VideoWriter('./data/%s.mkv' % sys.argv[1], VideoWriter_fourcc(*'X264'), FPS, (_GRID_SIZE, _GRID_SIZE))
