@@ -1,2 +1,5 @@
-# Ignore data directory
-data/
+# Ignore the data directory except the examples
+/data/*
+!/data/transit 1 planet/
+!/data/transit 2 planets/
+!/data/transit 3 planets/
