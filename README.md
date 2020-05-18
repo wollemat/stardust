@@ -1,5 +1,5 @@
 
-<p align="center"> <img src="./doc/icon.png" alt="icon" width="100" height="100" /> </p>
+<p align="center"> <img src="./icon.png" alt="icon" width="100" height="100" /> </p>
 
 # Stardust
 
