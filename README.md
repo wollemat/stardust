@@ -1,8 +1,9 @@
+
 <p align="center"> <img src="./doc/icon.png" alt="icon" width="100" height="100" /> </p>
 
 # Stardust
 
-Stardust is a simulation that models the transits of up to 3 planets in front of a star. This simulation is aggregated into a video file and an image file showing the transit.
+Stardust is a simulation that models the transit of an exoplanet in front of a distant star. The simulation takes the ingress of the planet, the egress of the planet and the limb darkening effect of the star into account.
 
 ## Getting Started
 
@@ -28,20 +29,16 @@ $ pipenv run python ./src/stardust.py DIRECTORY_NAME
 
 Where `DIRECTORY_NAME` is the name of the directory where the files will be stored. This video file will be stored at `./data/DIRECTORY_NAME/transit.mp4`. This image file will be stored at `./data/DIRECTORY_NAME/transit.png`. 
 
-Good luck and have fun.
+Good luck and have fun!
 
 ## Examples
 
-#### Transit video with 3 planets
+<p align="center"> <img src="https://media.giphy.com/media/cPZRvSC7omXoUMAPD4/giphy.gif" alt="example gif" width="512" height="512" /> </p>
 
-<p align="center"> <img src="https://media.giphy.com/media/gF8wep9qLIZec4a466/giphy.gif" alt="example gif" width="512" height="512" /> </p>
+<p align="center"> <img src="./transit.png" alt="example transit" height="300" /> </p>
 
-#### Transit of a single planet
-
-<p align="center"> <img src="./examples/transit 1 planet/transit.png" alt="example transit" height="300" /> </p>
-
-
-## Authors
+## Contributors
 
 * **Frederik Christian Slothouber** - *Initial work* - [wollemat](https://github.com/wollemat)
 * **Theo Min** - *Star generation*
+* Icon made by [roundicons freebies](https://www.flaticon.com/authors/roundicons-freebies) from [www.flaticon.com](https://www.flaticon.com)
