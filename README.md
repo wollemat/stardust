@@ -42,3 +42,7 @@ Good luck and have fun!
 * **Frederik Christian Slothouber** - *Initial work* - [wollemat](https://github.com/wollemat)
 * **Theo Min** - *Star generation*
 * Icon made by [roundicons freebies](https://www.flaticon.com/authors/roundicons-freebies) from [www.flaticon.com](https://www.flaticon.com)
+
+## License
+
+This project and its code is released under the [MIT license](LICENSE.txt).
