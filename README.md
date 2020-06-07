@@ -1,7 +1,7 @@
 
 <p  align="center"> <img src="doc/icon.png" alt="Icon" width="100" height="100" /> </p>
 <h1 align="center">Stardust</h1>
-<h4 align="center">"The Human Readable Password Generator"</h4>
+<h4 align="center">"The Exoplanet Transit Simulator"</h4>
 
 <p align="center">
     <a href="LICENSE.md">
