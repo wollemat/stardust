@@ -4,8 +4,6 @@
 <h4 align="center">"The Human Readable Password Generator"</h4>
 
 <p align="center">
-    <a href="https://travis-ci.com/github/wollemat/stardust/builds">
-    <img src="https://travis-ci.com/wollemat/stardust.svg?branch=master" alt="Build Status">
     <a href="LICENSE.md">
     <img src="https://img.shields.io/badge/license-MIT-yellow" alt="License">
     <a href="https://paypal.me/wollemat">
