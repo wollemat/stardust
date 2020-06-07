@@ -1,7 +1,7 @@
 from multiprocessing import Process
 from multiprocessing import Pipe
 
-from planet import cut_out_planets
+from planet import take_snapshot
 
 from config import NUMBER_OF_WORKERS
 from config import _GRID_SIZE
@@ -16,7 +16,7 @@ def worker_function(conn):
     msg = conn.recv()
 
     if isinstance(msg, int):
-        conn.send(cut_out_planets(msg))
+        conn.send(take_snapshot(msg))
         worker_function(conn)
         return
 

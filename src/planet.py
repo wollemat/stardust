@@ -42,7 +42,7 @@ def cut_out_planet(grid, planet_x, planet_y, planet_radius):
 #
 # x: The x coordinate of the center of the planet.
 #
-def cut_out_planets(x):
+def take_snapshot(x):
     grid = _STAR.copy()
     cut_out_planet(grid, x, _PLANET_Y, PLANET_RADIUS)
     return np.flip(np.swapaxes(grid, 0, 1), 0)
