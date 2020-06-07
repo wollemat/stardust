@@ -1,5 +1,5 @@
 
-<p  align="center"> <img src="docs/icon.png" alt="Icon" width="100" height="100" /> </p>
+<p  align="center"> <img src="doc/icon.png" alt="Icon" width="100" height="100" /> </p>
 <h1 align="center">Stardust</h1>
 <h4 align="center">"The Human Readable Password Generator"</h4>
 
@@ -74,7 +74,7 @@ Some examples for you to get you on your way. Good Luck & Be Safe!
 
 <p align="center"> <img src="https://media.giphy.com/media/cPZRvSC7omXoUMAPD4/giphy.gif" alt="example gif" width="512" height="512" /> </p>
 
-<p align="center"> <img src="docs/transit.png" alt="example transit" height="300" /> </p>
+<p align="center"> <img src="doc/transit.png" alt="example transit" height="300" /> </p>
 
 ## Contributing
 
