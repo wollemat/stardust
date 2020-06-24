@@ -67,7 +67,7 @@ Nothing demanding yet apparent nonetheless.
 
 First make sure that your issue is not already an existing one.
 We want to avoid duplicate issues as much as possible.
-Before continuing have a look at our [open](https://github.com/wollemat/stardust/issues) issues, our [closed](https://github.com/wollemat/stardust/issues?q=is%3Aissue+is%3Aclosed) issues and our[dropped](https://github.com/wollemat/stardust/issues?q=is%3Aissue+label%3A%22note%3A+wont+fix%22+) labeled issues as well.
+Before continuing have a look at our [open](https://github.com/wollemat/stardust/issues) issues, our [closed](https://github.com/wollemat/stardust/issues?q=is%3Aissue+is%3Aclosed) issues and our [dropped](https://github.com/wollemat/stardust/issues?q=is%3Aissue+label%3A%22note%3A+dropped%22+) labeled issues as well.
 
 Construct the tittle such that it could be used as a [commit message](#commit-messages).
 
@@ -112,11 +112,11 @@ Speaking of labels, we have a few. Issues should always have 2 types of labels: 
 
 There are 3 status labels:
 
-* [Queued](https://github.com/wollemat/stardust/issues?q=label%3A%22status%3A+pending%22+) -
+* [Queued](https://github.com/wollemat/stardust/issues?q=label%3A%22status%3A+queued%22+) -
 Not been picked up yet by anyone and is not currently tackled.
 You are free to pick any you want.
 Every issue starts off with this status.
-* [Pending](https://github.com/wollemat/stardust/issues?q=label%3A%22status%3A+in+progress%22+) -
+* [Pending](https://github.com/wollemat/stardust/issues?q=label%3A%22status%3A+pending%22+) -
 Actively being worked on by someone.
 Perhaps check for a matching [pull request](https://github.com/wollemat/stardust/pulls).
 * [Done](https://github.com/wollemat/stardust/issues?q=label%3A%22status%3A+done%22+) -
@@ -157,7 +157,7 @@ Big security risks, program breaking bugs or anything else urgent.
 * [Epic](https://github.com/wollemat/stardust/issues?q=label%3A%22note%3A+epic%22+) -
 Used if an issue is too large to realistically be implemented in a single commit or pull request.
 The issue will most likely be split into smaller more manageable issues down the road.
-* [Dropped](https://github.com/wollemat/stardust/issues?q=label%3A%22note%3A+wont+fix%22+) -
+* [Dropped](https://github.com/wollemat/stardust/issues?q=label%3A%22note%3A+dropped%22+) -
 This label is given to any issue that will not be implemented, fixed, answered or simply not interacted with.
 Think of out of scope discussions & questions or idiotic feature requests.
 * [(╯ಠ_ಠ)╯︵ ┻━┻](https://github.com/wollemat/stardust/issues?q=label%3A%22note%3A+%28%E2%95%AF%E0%B2%A0_%E0%B2%A0%29%E2%95%AF%EF%B8%B5+%E2%94%BB%E2%94%81%E2%94%BB%22+) -
