@@ -42,7 +42,7 @@ Download the source code by running the following code in your command prompt:
 $ git clone https://github.com/wollemat/stardust.git
 ```
 
-Or simply grab a copy of the source code as a Zip file [here](https://github.com/wollemat/stardust/archive/master.zip) for the latest release and [here](https://github.com/wollemat/stardust/archive/develop.zip) for the *"bleeding edge"* version.
+Or simply grab a copy of the source code as a zip file [here](https://github.com/wollemat/stardust/archive/master.zip) for the latest release and [here](https://github.com/wollemat/stardust/archive/develop.zip) for the *"bleeding edge"* version.
 
 Building is as simple as running the following commands in the root of the project:
 
@@ -81,7 +81,7 @@ Some examples for you to get you on your way. Good Luck & Be Safe!
 Feel free to help me out and make your mark on this project. 
 No program is ever perfect and Stardust can always be improved upon.
 If you feel like a feature is missing or you encounter a bug, please report it by creating an [issue](https://github.com/wollemat/stardust/issues/new).
-Before doing this please read the [Code of Conduct](CODE_OF_CONDUCT.md) and the [Contributing](CONTRIBUTING.md) guidelines.
+Before doing this please read the [Code of Conduct](CODE_OF_CONDUCT.md) and the [Contributing Guidelines](CONTRIBUTING.md).
 I look forward to working with you.
 
 ## Contributors
