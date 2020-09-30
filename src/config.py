@@ -8,5 +8,5 @@ PLANET_INCLINATION = 250  # Inclination of planet above the centerline in pixels
 IMAGE_SIZE = 1024  # Image width and Image height.
 IMAGE_MARGIN = 50  # Image margin around star.
 
-VIDEO_FPS = 48  # Frames per second for video generation.
+VIDEO_TIME = 10  # Length of video generated.
 NUMBER_OF_WORKERS = 16  # Number of threads run concurrently.

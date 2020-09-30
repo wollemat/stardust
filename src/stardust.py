@@ -5,7 +5,7 @@ from cv2 import VideoWriter
 from cv2 import VideoWriter_fourcc
 
 from config import NUMBER_OF_WORKERS
-from config import VIDEO_FPS
+from config import VIDEO_TIME
 from config import IMAGE_SIZE
 
 from worker import initialize_workers
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         print('Invalid arguments: Usage is stardust.py name_of_directory')
         exit()
 
-    video = VideoWriter(sys.argv[1], VideoWriter_fourcc(*'avc1'), VIDEO_FPS, (IMAGE_SIZE, IMAGE_SIZE))
+    video = VideoWriter(sys.argv[1], VideoWriter_fourcc(*'avc1'), int(IMAGE_SIZE / VIDEO_TIME), (IMAGE_SIZE, IMAGE_SIZE))
     counter = 0
     processes = []
     conns = []
