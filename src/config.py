@@ -3,7 +3,8 @@ STAR_LIMB_DARKENING_COEFFICIENT = 0.80  # Coefficient for the limb darkening imp
 STAR_LIMB_DARKENING_ALPHA = 0.85  # Alpha for the limb darkening implementation (Sun = 0.85).
 
 PLANET_SIZE = 100  # Size of planet diameter in pixels.
-PLANET_INCLINATION = 250  # Inclination of planet above the centerline in pixels, can be negative.
+PLANET_INIT = 250  # Start height of planet in pixels from the bottom.
+PLANET_ANGLE = 0.5  # Relative speed of planet orbit in y direction. Positive is up, negative is down.
 
 IMAGE_SIZE = 1024  # Image width and Image height.
 IMAGE_MARGIN = 50  # Image margin around star.

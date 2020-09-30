@@ -3,6 +3,8 @@ from multiprocessing import Pipe
 
 from planet import take_snapshot
 
+from config import PLANET_INIT
+from config import PLANET_ANGLE
 from config import NUMBER_OF_WORKERS
 from config import IMAGE_SIZE
 
@@ -16,7 +18,7 @@ def worker_function(conn):
     msg = conn.recv()
 
     if isinstance(msg, int):
-        conn.send(take_snapshot(msg))
+        conn.send(take_snapshot(msg, int(PLANET_INIT + msg * PLANET_ANGLE)))
         worker_function(conn)
         return
 

@@ -40,7 +40,7 @@ if __name__ == '__main__':
         print('Invalid arguments: Usage is stardust.py name_of_directory')
         exit()
 
-    video = VideoWriter(sys.argv[1], VideoWriter_fourcc(*'avc1'), int(IMAGE_SIZE / VIDEO_TIME), (IMAGE_SIZE, IMAGE_SIZE))
+    vid = VideoWriter(sys.argv[1], VideoWriter_fourcc(*'avc1'), int(IMAGE_SIZE / VIDEO_TIME), (IMAGE_SIZE, IMAGE_SIZE))
     counter = 0
     processes = []
     conns = []
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     print()
     while counter < IMAGE_SIZE:
         delegate_workers(conns, counter)
-        collect_from_workers(conns, counter, video, transit)
+        collect_from_workers(conns, counter, vid, transit)
         counter += NUMBER_OF_WORKERS
         if counter > IMAGE_SIZE:
             counter = IMAGE_SIZE
@@ -60,5 +60,5 @@ if __name__ == '__main__':
     print()
 
     stop_workers(conns, processes)
-    video.release()
+    vid.release()
     print('Video has been saved to %s' % sys.argv[1])

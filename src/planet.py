@@ -4,11 +4,9 @@ import numpy as np
 from star import generate_star
 
 from config import PLANET_SIZE
-from config import PLANET_INCLINATION
 from config import IMAGE_SIZE
 
 _STAR_IMAGE = generate_star(IMAGE_SIZE)  # Cached star image.
-_PLANET_Y = int(IMAGE_SIZE / 2 + PLANET_INCLINATION)  # Y coordinate of planet.
 
 
 #
@@ -37,8 +35,9 @@ def cut_out_planet(grid, planet_x, planet_y, planet_radius):
 # and transposes the image such that it is rendered correctly.
 #
 # x: The x coordinate of the center of the planet.
+# y: The y coordinate of the center of the planet.
 #
-def take_snapshot(x):
+def take_snapshot(x, y):
     grid = _STAR_IMAGE.copy()
-    cut_out_planet(grid, x, _PLANET_Y, int(PLANET_SIZE / 2))
+    cut_out_planet(grid, x, y, int(PLANET_SIZE / 2))
     return np.flip(np.swapaxes(grid, 0, 1), 0)
