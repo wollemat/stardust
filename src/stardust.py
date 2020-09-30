@@ -19,17 +19,16 @@ from worker import stop_workers
 # This function prints a progress bar in the terminal. The progress bar needs to be manually updated
 # with the current progress.
 #
-# iteration: The frame currently being rendered.
-# total: The total amount of frames to be rendered.
+# progress: Value between 0.0 and 1.0 representing the progress.
 #
-def print_progress_bar(iteration, total):
+def print_progress_bar(progress):
     fill = '█'
     length = 80
-    percent = '{0:.1f}'.format(100 * (iteration / float(total)))
-    filled_length = int(length * iteration // total)
+    percent = '{0:.1f}'.format(100 * progress)
+    filled_length = int(length * progress)
     bar = fill * filled_length + '-' * (length - filled_length)
     print('\r|%s| %s%%' % (bar, percent), end='\r')
-    if iteration == total:
+    if progress >= 1.0:
         print()
 
 
@@ -57,7 +56,7 @@ if __name__ == '__main__':
         counter += NUMBER_OF_WORKERS
         if counter > IMAGE_SIZE:
             counter = IMAGE_SIZE
-        print_progress_bar(counter, IMAGE_SIZE)
+        print_progress_bar(counter / IMAGE_SIZE)
     print()
 
     stop_workers(conns, processes)
