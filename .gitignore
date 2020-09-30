@@ -1,2 +1,5 @@
 # Ignore the data directory
-/data/*
+/tmp/*
+
+# Ignore pychache
+/src/__pycache__/*

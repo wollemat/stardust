@@ -1,15 +1,12 @@
-import os
 import sys
-
 import numpy as np
-import matplotlib.pyplot as plt
 
 from cv2 import VideoWriter
 from cv2 import VideoWriter_fourcc
 
 from config import NUMBER_OF_WORKERS
-from config import FPS
-from config import _GRID_SIZE
+from config import VIDEO_FPS
+from config import IMAGE_SIZE
 
 from worker import initialize_workers
 from worker import start_workers
@@ -37,18 +34,6 @@ def print_progress_bar(iteration, total):
 
 
 #
-# This function creates a directory. If the directory already exists it does nothing.
-#
-# name: The name of the directory to be created.
-#
-def mkdir(name):
-    try:
-        os.mkdir(name)
-    except FileExistsError:
-        pass
-
-
-#
 # The main function of the script. The program starts here.
 #
 if __name__ == '__main__':
@@ -56,36 +41,25 @@ if __name__ == '__main__':
         print('Invalid arguments: Usage is stardust.py name_of_directory')
         exit()
 
-    mkdir('data')
-    mkdir('data/%s' % sys.argv[1])
-
-    video = VideoWriter('./data/%s/transit.mp4' % sys.argv[1], VideoWriter_fourcc(*'avc1'), FPS, (_GRID_SIZE, _GRID_SIZE))
+    video = VideoWriter(sys.argv[1], VideoWriter_fourcc(*'avc1'), VIDEO_FPS, (IMAGE_SIZE, IMAGE_SIZE))
     counter = 0
     processes = []
     conns = []
-    transit = np.zeros(_GRID_SIZE)
+    transit = np.zeros(IMAGE_SIZE)
 
     initialize_workers(conns, processes)
     start_workers(processes)
 
     print()
-    while counter < _GRID_SIZE:
+    while counter < IMAGE_SIZE:
         delegate_workers(conns, counter)
         collect_from_workers(conns, counter, video, transit)
         counter += NUMBER_OF_WORKERS
-        if counter > _GRID_SIZE:
-            counter = _GRID_SIZE
-        print_progress_bar(counter, _GRID_SIZE)
+        if counter > IMAGE_SIZE:
+            counter = IMAGE_SIZE
+        print_progress_bar(counter, IMAGE_SIZE)
     print()
 
     stop_workers(conns, processes)
     video.release()
-    print('Video has been saved to ./data/%s/transit.mp4' % sys.argv[1])
-
-    transit /= transit[0]
-    plt.figure(figsize=(12, 4))
-    plt.plot(transit)
-    plt.title('Measured Luminosity over Time')
-    plt.gca().axes.get_xaxis().set_ticks([])
-    plt.savefig('./data/%s/transit.png' % sys.argv[1])
-    print('Transit has been saved to ./data/%s/transit.png' % sys.argv[1])
+    print('Video has been saved to %s' % sys.argv[1])

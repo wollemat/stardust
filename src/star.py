@@ -1,39 +1,43 @@
 import math
 import numpy as np
 
-from config import STAR_RADIUS
 from config import STAR_LIMB_DARKENING_COEFFICIENT
 from config import STAR_LIMB_DARKENING_ALPHA
-from config import MARGIN
-from config import _GRID_SIZE
+from config import IMAGE_SIZE
+from config import IMAGE_MARGIN
+
+_STAR_RADIUS = int(IMAGE_SIZE / 2 - IMAGE_MARGIN)
 
 
 #
 # This function calculates the brightness of the star at a certain distance from the center. The effect
-# of limb darkening has been allowed for.
+# of limb darkening has been allowed for. Credit for the formula goes to Theo Min.
 #
 # d_star_center: The pixel distance from the center of the star.
 #
 def calc_star_brightness(d_star_center):
-    tmp = (1 - ((d_star_center / STAR_RADIUS) ** 2)) ** 0.5
+    tmp = (1 - ((d_star_center / _STAR_RADIUS) ** 2)) ** 0.5
     return 1 - STAR_LIMB_DARKENING_COEFFICIENT * (1 - (tmp ** STAR_LIMB_DARKENING_ALPHA))
 
 
 #
 # This function generates an image of a star and returns the image grid.
 #
-def generate_star():
-    grid = np.zeros((_GRID_SIZE, _GRID_SIZE, 3), dtype=np.uint8)
+# side_size: The size of the image. The image is square so the width and the height are equal.
+#
+def generate_star(side_size):
+    grid = np.zeros((side_size, side_size, 3), dtype=np.uint8)
 
-    for x in range(_GRID_SIZE):
-        for y in range(_GRID_SIZE):
-            dx_star_center = STAR_RADIUS + MARGIN - x
-            dy_star_center = STAR_RADIUS + MARGIN - y
+    for x in range(side_size):
+        for y in range(side_size):
+            dx_star_center = _STAR_RADIUS + IMAGE_MARGIN - x
+            dy_star_center = _STAR_RADIUS + IMAGE_MARGIN - y
             d_star_center = math.sqrt(dx_star_center ** 2 + dy_star_center ** 2)
 
-            if d_star_center < STAR_RADIUS:
+            if d_star_center < _STAR_RADIUS:
                 brightness = calc_star_brightness(d_star_center)
-                grid[x, y, 2] = 255 * brightness
-                grid[x, y, 1] = 165 * brightness
+                grid[x, y, 2] = 255 * brightness  # Set the red channel
+                grid[x, y, 1] = 165 * brightness  # Set the green channel
+                grid[x, y, 0] = 000 * brightness  # Set the blue channel
 
     return grid

@@ -4,7 +4,7 @@ from multiprocessing import Pipe
 from planet import take_snapshot
 
 from config import NUMBER_OF_WORKERS
-from config import _GRID_SIZE
+from config import IMAGE_SIZE
 
 
 #
@@ -39,6 +39,7 @@ def initialize_workers(conns, processes):
         process = Process(target=worker_function, args=(child_connection,))
         processes.append(process)
         conns.append(parent_connection)
+
     print('Workers are initialized')
 
 
@@ -50,6 +51,7 @@ def initialize_workers(conns, processes):
 def start_workers(processes):
     for i in range(NUMBER_OF_WORKERS):
         processes[i].start()
+
     print('Workers have started')
 
 
@@ -61,8 +63,9 @@ def start_workers(processes):
 #
 def delegate_workers(conns, counter):
     for i in range(NUMBER_OF_WORKERS):
-        if counter == _GRID_SIZE:
+        if counter == IMAGE_SIZE:
             break
+
         conns[i].send(counter)
         counter += 1
 
@@ -76,8 +79,9 @@ def delegate_workers(conns, counter):
 #
 def collect_from_workers(conns, counter, video, transit):
     for i in range(NUMBER_OF_WORKERS):
-        if counter == _GRID_SIZE:
+        if counter == IMAGE_SIZE:
             break
+
         frame = conns[i].recv()
         transit[counter] = frame.mean()
         video.write(frame)
@@ -93,6 +97,8 @@ def collect_from_workers(conns, counter, video, transit):
 def stop_workers(conns, processes):
     for i in range(NUMBER_OF_WORKERS):
         conns[i].send('stop')
+
     for i in range(NUMBER_OF_WORKERS):
         processes[i].join()
+
     print('Workers have been stopped')
