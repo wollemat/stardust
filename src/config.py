@@ -6,9 +6,9 @@ STAR_CHANNEL_RED = 255  # Red color channel value star.
 STAR_CHANNEL_GREEN = 165  # Green color channel value star.
 STAR_CHANNEL_BLUE = 0  # Blue color channel value star.
 
-PLANET_SIZE = 80  # Size of planet diameter in pixels.
+PLANET_SIZE = 65  # Size of planet diameter in pixels.
 PLANET_INIT = 150  # Start height of planet in pixels from the bottom.
-PLANET_ANGLE = 0.5  # Relative speed of planet orbit in y direction. Positive is up, negative is down.
+PLANET_ANGLE = 1.3  # Relative speed of planet orbit in y direction. Positive is up, negative is down.
 
 IMAGE_SIZE = 1024  # Image width and Image height.
 IMAGE_MARGIN = 50  # Image margin around star.

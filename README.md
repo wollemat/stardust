@@ -1,13 +1,11 @@
 
-<p  align="center"> <img src="doc/icon.png" alt="Icon" width="100" height="100" /> </p>
+<p  align="center"> <img src="icon.png" alt="Icon" width="100" height="100" /> </p>
 <h1 align="center">Stardust</h1>
 <h4 align="center">"The Exoplanet Transit Simulator"</h4>
 
 <p align="center">
     <a href="LICENSE.md">
     <img src="https://img.shields.io/badge/license-MIT-yellow" alt="License">
-    <a href="https://paypal.me/wollemat">
-    <img src="https://img.shields.io/badge/donate-PayPal-orange" alt="Donate">
 </p>
       
 <p align="center">
@@ -15,9 +13,7 @@
   <a href="#building">Building</a> •
   <a href="#deployment">Deployment</a> •
   <a href="#examples">Examples</a> •
-  <a href="#contributing">Contributing</a> •
   <a href="#contributors">Contributors</a> •
-  <a href="#donate">Donate</a> •
   <a href="#license">License</a>
 </p>
 
@@ -59,12 +55,18 @@ We could start an environment and run the script in that.
 However it is possible to run the script with a single command.
 
 ```
-$ pipenv run python ./src/stardust.py DIRECTORY_NAME
+$ pipenv run python ./src/stardust.py OUTPUT
 ```
 
-Where `DIRECTORY_NAME` is the name of the directory where the files will be stored. 
-The video file will be stored at `./data/DIRECTORY_NAME/transit.mp4`. 
-The image file will be stored at `./data/DIRECTORY_NAME/transit.png`. 
+Where `OUTPUT` is the output directory and name. 
+The directories used already need to exists or else he script will fail.
+Some examples:
+
+```
+$ pipenv run python ./src/stardust.py sun.mp4
+$ pipenv run python ./src/stardust.py tmp/sun.mp4
+$ pipenv run python ./src/stardust.py tmp/the/sun.mp4
+```
 
 Good luck and have fun!
 
@@ -72,27 +74,15 @@ Good luck and have fun!
 
 Some examples for you to get you on your way. Good Luck & Be Safe!
 
-<p align="center"> <img src="https://media.giphy.com/media/cPZRvSC7omXoUMAPD4/giphy.gif" alt="example gif" width="512" height="512" /> </p>
-
-<p align="center"> <img src="doc/transit.png" alt="example transit" height="300" /> </p>
-
-## Contributing
-
-Feel free to help me out and make your mark on this project. 
-No program is ever perfect and Stardust can always be improved upon.
-If you feel like a feature is missing or you encounter a bug, please report it by creating an [issue](https://github.com/wollemat/stardust/issues/new).
-Before doing this please read the [Code of Conduct](CODE_OF_CONDUCT.md) and the [Contributing Guidelines](CONTRIBUTING.md).
-I look forward to working with you.
+<img src="https://media.giphy.com/media/lEFTywhP5VaLAHBZiL/giphy.gif" width="49%"></img> 
+<img src="https://media.giphy.com/media/azaoucgarppTGuKuCs/giphy.gif" width="49%"></img> 
+<img src="https://media.giphy.com/media/HIzP0htH5lkeOIWO5p/giphy.gif" width="49%"></img> 
+<img src="https://media.giphy.com/media/RYtn4ZYEEzlIPs1GY9/giphy.gif" width="49%"></img> 
 
 ## Contributors
 
 * **Frederik Christian Slothouber** - *Initial work* - [wollemat](https://github.com/wollemat)
 * **Theo Min** - *Limb darkening effect*
-
-## Donate
-
-Please consider [donating](https://paypal.me/wollemat) if you found Stardust helpful in any shape or form. 
-A small contribution comes a long way and is much appreciated.
 
 ## License
 
