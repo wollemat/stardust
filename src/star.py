@@ -3,6 +3,11 @@ import numpy as np
 
 from config import STAR_LIMB_DARKENING_COEFFICIENT
 from config import STAR_LIMB_DARKENING_ALPHA
+
+from config import STAR_CHANNEL_RED
+from config import STAR_CHANNEL_GREEN
+from config import STAR_CHANNEL_BLUE
+
 from config import IMAGE_SIZE
 from config import IMAGE_MARGIN
 
@@ -36,8 +41,8 @@ def generate_star(side_size):
 
             if d_star_center < _STAR_RADIUS:
                 brightness = calc_star_brightness(d_star_center)
-                grid[x, y, 2] = 255 * brightness  # Set the red channel
-                grid[x, y, 1] = 165 * brightness  # Set the green channel
-                grid[x, y, 0] = 000 * brightness  # Set the blue channel
+                grid[x, y, 2] = STAR_CHANNEL_RED * brightness  # Set the red channel
+                grid[x, y, 1] = STAR_CHANNEL_GREEN * brightness  # Set the green channel
+                grid[x, y, 0] = STAR_CHANNEL_BLUE * brightness  # Set the blue channel
 
     return grid
